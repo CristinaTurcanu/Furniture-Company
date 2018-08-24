@@ -1,7 +1,7 @@
 $(document).ready(() => {
-
-  categoryContainer = $('.products .categories');
-  let categoryUrl = "http://iw-internship.herokuapp.com/api/v1/furniture-categories/";
+  categoryContainer = $(".products .categories");
+  let categoryUrl =
+    "http://iw-internship.herokuapp.com/api/v1/furniture-categories/";
   fetch(categoryUrl)
   .then(response => {
     return response.json();
@@ -15,25 +15,23 @@ $(document).ready(() => {
         btn.attr('data-id', category.id);
         categoryContainer.append(btn);
       }
-    }
-  });
+    });
 
-  $(document).on('click', '.products .categories .btn', (evt) => {
+  $(document).on("click", ".products .categories .btn", evt => {
     let target = $(evt.target);
 
     furnituresUrl = `${categoryUrl}${target.data("id")}/furnitures`;
 
     fetch(furnituresUrl)
-    .then((response) => {
-      return response.json();
-    })
+      .then(response => {
+        return response.json();
+      })
 
     .then( furnitures => {
         cardContainer = $(".products .cards");
-        cardContainer.children('.card.cln').remove();
-        cardTemplate = cardContainer.find('.card');
+        cardContainer.children(".card.cln").remove();
+        cardTemplate = cardContainer.find(".card");
         for (furniture of furnitures) {
-            console.log('here')
             if (furniture.visible) {
                 let card = cardTemplate.clone()
                 card.prop('hidden', false);
@@ -60,22 +58,6 @@ $(document).ready(() => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Filter
 // $(function() {
 //   $('.toggles button').click(function() {
@@ -90,3 +72,4 @@ $(document).ready(() => {
 //     $('.card').show(500);
 //   });
 // });
+
