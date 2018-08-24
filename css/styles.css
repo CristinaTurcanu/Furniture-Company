@@ -1,0 +1,355 @@
+
+
+@import "sections/nav.css";
+@import "sections/footer.css";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  color: #5a5a5a;
+}
+
+  /* The Carousel
+  -------------------- */
+.collection .carousel-caption {
+  bottom: 10rem;
+  z-index: 10;
+}
+.collection .carousel-item {
+  height: 46rem;
+  background-color: #777;
+}
+.collection .carousel-item h1 {
+  font-size: 6rem;
+  font-weight: 400;
+  text-shadow: 4px 2px 6px rgb(100, 100, 100);
+}
+.collection .carousel-item p{
+  margin-top: -1.5rem;
+  font-size: 1.2rem;
+  font-weight: 100;
+  text-shadow: 4px 2px 6px rgb(54, 54, 54);
+  color: #fff;
+}
+.collection .carousel-item .btn {
+  margin-top: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.568);
+  color: #222;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: 'Pacifico', sans-serif;
+  padding: 16px 0;
+  width: 17rem;
+  box-shadow: 5px 0 3px #ddd;
+  transition: all 0.5s;
+}
+  
+.collection .carousel-item .btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.collection .carousel-item .btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.collection .carousel-item .btn:hover span {
+  padding-right: 25px;
+}
+
+.collection .carousel-item .btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.collection .carousel-item > img {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  min-width: 100%;
+  height: auto;
+}
+.collection .carousel-item .slide {
+  background-position: bottom;
+  background-size: cover;
+}
+@media screen and (max-width: 1300px) {
+  .collection .carousel-item {
+    height: 30rem;
+  }
+  .collection .carousel-item h1 {
+    font-size: 4rem;
+    font-weight: 400;
+    text-shadow: 4px 2px 6px rgb(100, 100, 100);
+  }
+  .collection .carousel-item .btn {
+    font-size: 18px;
+    padding: 14px 0;
+    width: 13rem;
+  }
+    
+}
+@media screen and (max-width: 860px) {
+  .collection .carousel-item {
+    height: 20rem;
+  }
+  .collection .carousel-item h1{
+    font-size: 2.8rem;
+  }
+  .collection .carousel-caption {
+    bottom: 3rem;
+  }
+  .collection .carousel-item > img {
+    top: 0;
+  }
+  .collection .carousel-item p {
+    display: none;
+  }
+}
+@media screen and (max-width: 568px) {
+  .collection .carousel-item {
+    height: 13rem;
+  }
+  .collection .carousel-item h1{
+    font-size: 2rem;
+  }
+  .collection .carousel-caption {
+    bottom: 1.6rem;
+  }
+  .collection .carousel-item .btn {
+    font-size: 14px;
+    padding: 12px 0;
+    width: 9rem;
+  }
+}
+  /* New Arrivals
+  -------------------- */
+  .arrivals {
+    padding: 20px 0;
+    width: 76%;
+    margin: 0 auto; 
+  }
+  .arrivals img {
+    width: auto;
+    max-height: 320px;
+  }
+  .arrivals h1 {
+    padding: 10px 0;
+    font-size: 5.3rem;
+    color: #777;
+    text-align: center;
+    font-family: 'Cabin', sans-serif;
+  }
+  .arrivals .card-body .card-title span {
+    color: rgb(231, 160, 78);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+  .arrivals .card-body .card-title {
+    font-size: 1.3rem;
+    color: #666;
+    font-weight: bold;
+  }
+  .box-shadow { 
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+  @media screen and (max-width: 1240px) {
+    .arrivals img {
+      height: 240px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .arrivals img {
+      height: 340px;
+    }
+  }
+  @media screen and (max-width: 495px) {
+    .arrivals img {
+      height: 250px;
+      width: 280px;
+    }
+  }
+  
+  /* Testimonials
+  ------------------------- */
+  .arrivals h2,
+  .testimonials h2,
+  .sellers h2,
+  .blog h2 {
+    margin-top: 3rem;
+    font-size: 5.3rem;
+    color: #777;
+    text-align: center;
+    font-family: 'Cabin', sans-serif;
+  }
+  
+.testimonials .carousel-inner .carousel-item {
+  height: 24rem;
+  background-color: rgb(231, 227, 225);
+  padding: 4rem 0;
+  transition: 0.5s ease-in-out left;
+}
+.testimonials .carousel-inner .carousel-item .img-box{
+  width: 145px;
+  height: 6.5rem;
+}
+.testimonials .carousel-inner .carousel-item h5 {
+  margin-top: 2.7rem;
+}
+ 
+.testimonials .carousel-control-prev{
+  left: 0;
+}
+.testimonials .carousel-control-next{
+  right: 0;
+}
+.testimonials .carousel-indicators {
+  bottom: 30px;
+}
+
+  @media (min-width: 320px) and (max-width: 640px) {
+    .testimonials .carousel-inner .carousel-item p{
+      font-size: 14px;
+    }
+    .testimonials .carousel-control-prev{
+      left: -40px;
+    }
+    .testimonials .carousel-control-next{
+      right: -40px;
+    }
+    .testimonials .carousel-indicators{
+      top: 200px;
+    }
+  }
+
+  /* Best Sellers
+  ------------------------- */
+.sellers .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+.sellers .row .column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+  position: relative;
+}
+.sellers .row .column img {
+  width: 100%;
+  height: 90%;
+}
+.sellers .row .column:hover .middle {
+  opacity: 1;
+}
+.sellers .text {
+  background-color: rgba(255, 255, 255, 0.568);
+  color: #222;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: 'Pacifico', sans-serif;
+  padding: 16px 32px;
+  box-shadow: 5px 0 3px #ddd;
+}
+
+.sellers .column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+.sellers .middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 1000px) {
+  .sellers .row .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .sellers .row .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+    /* Blog
+  ------------------------- */
+.blog .card {
+  border-top: 8px solid rgba(167, 144, 102, 0.6);
+}
+.blog .card:hover {
+  transform: scale(1.05);
+  border-top: 8px solid rgba(140, 91, 0, 0.6);
+}
+.blog .card h3 a{
+  font-family: 'Pacifico', sans-serif;
+  font-size: 2rem;
+  color: #555;
+  text-decoration: none;
+}
+.blog .card .card-text,
+.blog .card .more {
+  color: #333;
+  font-size: 1.1rem;
+  letter-spacing: -1.3px;
+  padding: .5rem 0;
+}
+.blog .card .btn a{
+  outline: none;
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(145, 127, 92)
+}
+.blog .card button:hover {
+  background-color: #fff;
+  border: 1.5px solid #888;
+}
+.blog i {
+  border: solid #777;
+  border-width: 0 1.5px 1.5px 0;
+  display: inline-block;
+  padding: 2.5px;
+  margin-bottom: 3px;
+}
+
+.blog .right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+  
+  
+  

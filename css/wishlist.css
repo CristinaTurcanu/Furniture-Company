@@ -1,0 +1,20 @@
+
+@import "sections/nav.css";
+@import "sections/footer.css";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+    padding: 10rem 0;
+}
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+}
+.list-group-item img {
+    width: 70px;
+    height: 70px;
+}

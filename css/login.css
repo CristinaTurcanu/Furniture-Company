@@ -1,0 +1,154 @@
+
+@import "sections/nav.css";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+}
+.left-half {
+    background: url(../images/login.jpg) no-repeat;
+    background-size: cover;
+    width: auto;
+    position: absolute;
+    left: 0px;
+    height: 100vh;
+ }
+ .right-half {
+    background-color: #fff;
+    width: 60vw;
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    padding: 10rem 6rem;
+ }
+ .right-half form {
+     width: 40vw;
+     border: 2px solid rgb(163, 155, 148);
+     padding: 5rem 4rem 2rem 5rem;
+     border-radius: 5%;
+ }
+.right-half form h2 {
+    color: #222;
+    font-size: 40px;
+    font-weight: 500;
+    font-family: 'Pacifico', sans-serif;
+}
+form .form-group label {
+    font-size: 22px;
+}
+form .form-group input {
+    outline: none;
+    border-bottom: 2px solid #999;
+}
+form .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+form .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+form .checkmark {
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    height: 1.4rem;
+    width: 1.4rem;
+    background-color: rgb(50, 139, 105);
+    border-radius: 0.4rem;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container input:checked ~ .checkmark:after {
+display: block;
+}
+.container .checkmark:after {
+left: 9px;
+top: 5px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 3px 3px 0;
+-webkit-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+form .container a {
+    text-decoration: none;
+    color: rgb(192, 172, 105);
+    font-size: 18px;
+}
+form .checkbox a:hover {
+    color: rgb(148, 111, 76);
+    font-weight: bold;
+}
+form .btn {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #222;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'Pacifico', sans-serif;
+    padding: 16px 32px;
+    box-shadow: 1px 2px 5px 2px #ddd;
+}
+form .btn:hover {
+    box-shadow: 1px 4px 8px 2px #bbb;
+}
+@media screen and (max-width: 1210px) {
+    .right-half {
+        height: 100vh;
+        padding: 10rem 3rem;
+    }
+    .right-half form {
+        width: 50vw;
+        padding: 5rem 2rem 2rem 2rem;
+    }
+    .right-half form h2 {
+        font-size: 30px;
+    }
+    form .form-group label {
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 750px) {
+    .left-half {
+        display: none;
+    }
+    .right-half {
+        width: 100%;
+    }
+    .right-half form {
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 5rem;
+    }
+    form .container,
+    form .container a {
+        font-size: 15px;
+}
+@media screen and (max-width: 550px) {
+    .right-half form h2 {
+        font-size: 20px;
+    }
+    form .form-group label {
+        font-size: 14px;
+    }
+    form .form-group input {
+        height: 30px;
+    }
+}

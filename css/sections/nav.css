@@ -1,0 +1,31 @@
+nav {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-bottom: .7px solid #ccc;
+    width: 100vw;
+}
+.navbar-dark .navbar-brand {
+    color: #666;
+    font-size: 1.5rem;
+    font-family: 'Pacifico', cursive;
+}
+.navbar-dark .navbar-brand:hover,
+nav #navbar .nav-link:hover {
+    color: #333;
+    font-weight: 500;
+}
+nav #navbar .nav-link{
+    color: #666;
+    font-size: 1.3rem;
+    font-weight: 400;
+    position: relative;
+    padding: 0 0.6rem;
+}
+nav #navbar .nav-link i {
+    padding: 0 0.6rem;
+}
+
+@media screen and (max-width: 700px){
+    nav{
+        height: 48px;
+    }
+}
