@@ -140,6 +140,7 @@ form .btn:hover {
     form .container,
     form .container a {
         font-size: 15px;
+    }
 }
 @media screen and (max-width: 550px) {
     .right-half form h2 {

@@ -181,7 +181,6 @@ body {
   /* Testimonials
   ------------------------- */
   .arrivals h2,
-  .testimonials h2,
   .sellers h2,
   .blog h2 {
     margin-top: 3rem;
@@ -282,6 +281,11 @@ body {
   .sellers .row .column {
     flex: 50%;
     max-width: 50%;
+  }
+  .arrivals h2,
+  .sellers h2,
+  .blog h2 {
+    font-size: 4rem;
   }
 }
 @media screen and (max-width: 600px) {

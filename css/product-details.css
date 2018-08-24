@@ -1,0 +1,61 @@
+
+@import "sections/nav.css";
+@import "sections/footer.css";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  color: #5a5a5a;
+  padding-top: 7rem; 
+}
+.prod-details{
+    width: 58%;
+    margin: 0 auto;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+.prod-details .image img {
+    max-width: 580px;
+    height: auto;
+}
+.prod-details .details .name {
+    font-size: 35px;
+    font-family: 'Pacifico', sans-serif;
+}
+.prod-details .details .price {
+    font-size: 26px;
+    color: rgb(179, 151, 76);
+}
+.prod-details .details .description,
+.prod-details .details .color,
+.prod-details .details .availability {
+    text-align: justify;
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    font-family: 'Cabin', sans-serif;
+}
+.prod-details .details .shop {
+    display: flex;
+    justify-content: space-between;
+}
+.prod-details .shop select,
+.prod-details .details .shop button {
+    width: 10rem;
+    background-color: #fff;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'Pacifico', sans-serif;
+    padding: 8px 0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.prod-details .shop select {
+    width: 5rem;
+    padding: 6px 0;
+}
