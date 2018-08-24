@@ -29,25 +29,20 @@ $(document).ready(() => {
 
       .then(furnitures => {
         cardContainer = $(".products .cards");
+        cardContainer.children(".card.cln").remove();
         cardTemplate = cardContainer.find(".card");
         for (furniture of furnitures) {
-          cardContainer = $(".products .cards");
-          cardContainer.children(".card.cln").remove();
-          cardTemplate = cardContainer.find(".card");
-          for (furniture of furnitures) {
-            console.log("here");
-            if (furniture.visible) {
-              let card = cardTemplate.clone();
-              card.prop("hidden", false);
-              card.addClass("cln");
-              card.find(".description .name").text(furniture.name);
-              card.find(".description .price").text(furniture.price);
-              card
-                .find(".description .availability")
-                .text(furniture.availability);
-              card.find(".description .descr").text(furniture.description);
-              cardContainer.append(card);
-            }
+          if (furniture.visible) {
+            let card = cardTemplate.clone();
+            card.prop("hidden", false);
+            card.addClass("cln");
+            card.find(".description .name").text(furniture.name);
+            card.find(".description .price").text(furniture.price);
+            card
+              .find(".description .availability")
+              .text(furniture.availability);
+            card.find(".description .descr").text(furniture.description);
+            cardContainer.append(card);
           }
         }
       });
