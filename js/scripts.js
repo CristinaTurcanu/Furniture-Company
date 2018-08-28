@@ -48,55 +48,8 @@ $(document).ready(() => {
           }
       });
     });
-
-    $('.products .cards .card .description .name').click(function() {
-      const queryParamsString = window.location.search.substr(1);
-      const queryParams = queryParamsString
-        .split('&')
-        .reduce((accumulator, singleQueryParam) => {
-          const [key, value] = singleQueryParam.split('=');
-          accumulator[key] = decodeURIComponent(value);
-          return accumulator;
-        }, {});
-    
-        let categoryId = queryParams["cid"];
-        let furnitureId = queryParams["fid"]; 
-        if(categoryId && furnitureId) {
-          let productDetailUrl = 'http://iw-internship.herokuapp.com/api/v1/furniture-categories/${categoryId}/furnitures/${furnitureId}';
-          fetch(productDetailUrl)
-          .then(response => {
-            return response.json();
-          })
-          .then(productDetail => {
-            if(productDetail.visible) {
-              let details = 
-              `<section class="prod-details">
-                  <div class="image">
-                      <img src="images/products/living2.jpg" alt="">
-                  </div>
-                  <div class="details">
-                      <h3 class="name">${productDetail.name}</h3>
-                      <hr>
-                      <p class="price">${productDetail.price}</p>
-                      <p class="description">${productDetail.description}</p>
-                      <p class="color">${'Color: ' + productDetail.color}</p>
-                      <p class="availability">Availability: ${productDetail.availability}</p>
-      
-                      <div class="shop">
-                          <select>
-                              <option>1</option>
-                              <option>2</option>
-                          </select>
-                          <button>Add to cart</button>
-                      </div>
-                  </div>
-                </section>`
-            $('.products .cards').append(details);
-            }
-          }); 
-        }
-    });
   });
+
 
 
 function generateCard(furniture, catId) {
@@ -115,61 +68,3 @@ function generateCard(furniture, catId) {
         </div> `;
   
 }
-// function showDetails(productDetail) {
-//   return `<section class="prod-details">
-//             <div class="image">
-//                 <img src="images/products/living2.jpg" alt="">
-//             </div>
-//             <div class="details">
-//                 <h3 class="name">${productDetail.name}</h3>
-//                 <hr>
-//                 <p class="price">${productDetail.price}</p>
-//                 <p class="description">${productDetail.description}</p>
-//                 <p class="color">${'Color: ' + productDetail.color}</p>
-//                 <p class="availability">Availability: ${productDetail.availability}</p>
-
-//                 <div class="shop">
-//                     <select>
-//                         <option>1</option>
-//                         <option>2</option>
-//                     </select>
-//                     <button>Add to cart</button>
-//                 </div>
-//             </div>
-//           </section>`;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Filter
-// $(function() {
-//   $('.toggles button').click(function() {
-//     var get_id = this.id;
-//     var get_current = $('.cards .' + get_id);
-
-//     $('.card').not(get_current).hide(500);
-//     get_current.show(500);
-//   });
-
-//   $('#showall').click(function() {
-//     $('.card').show(500);
-//   });
-// });
