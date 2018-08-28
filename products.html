@@ -38,201 +38,42 @@
           </ul>
           <ul class="nav navbar-nav mr-0 user">
             <li class="nav-item">
-              <a class="nav-link" href="login.html"><i class="fa fa-fw fa-user"></i></a>
+              <a class="nav-link" href="login.html"><i class="fa fa-user"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"><i class="fa fa-fw fa-shopping-cart"></i></a>
+              <a class="nav-link"><i class="fa fa-shopping-cart"></i></a>
             </li>
           </ul>
         </div>
       </nav>
  </header>
+
  <main>
     <h1>Choose your favourire product</h1>
    <section class="products">
 
      <div class="categories">
-       <!-- <button id="showall">Show All</button>
-       <button id="bedroom">Bedroom</button>
-       <button id="living">Living room</button>
-       <button id="dining">Dining room</button>
-       <button id="kids">Kids</button>
-       <button id="outdoor">Outdoor</button> -->
+       <!-- Buttons are created using jquery -->
      </div>
      <div class="cards">
-         <div class="card" id="" hidden>
-         <img src="images/products/bed1.jpg" alt="">
-         <div class="description">
-            <p class="name"></p>
-            <p class="price"></p>
-            <p class="availability"></p>
-            <p class="descr"></p>
-        </div>
-        <button class="add">Add to cart</button>
-        <div class="overlay">
-            <i class="fa fa-heart"></i> 
-        </div>
-       </div> 
-    <!--
-       <div class="card bedroom">
-         <img src="images/products/bed1.jpg" alt="">
-         <div class="description">
-            <p class="name">Furniture</p>
-            <p class="price">199$</p>
-            <p class="availability">In Stock</p>
-            <p class="descr">test test test</p>
-        </div>
-        <div class="overlay">
-            <i class="fa fa-heart"></i> 
-        </div>
-       </div>
-
-        <div class="card bedroom">
-          <img src="images/products/bed2.jpg" alt="">
-          <div class="description">
-              <p class="name" id="name">Furniture</p>
-              <p class="price">199$</p>
-              <p class="availability">In Stock</p>
-              <p class="descr">test test test</p>
-          </div>
-          <div class="overlay">
-              <i class="fa fa-heart"></i> 
-          </div>
-        </div>
-
-        <div class="card bedroom">
-          <img src="images/products/bed3.jpg" alt="">
-          <div class="description">
-              <p class="name">Furniture</p>
-              <p class="price">199$</p>
-              <p class="availability">In Stock</p>
-              <p class="descr">test test test</p>
-          </div>
-          <div class="overlay">
-              <i class="fa fa-heart"></i> 
-          </div>
-        </div>
-
-        <div class="card bedroom">
-          <img src="images/products/bed4.jpg" alt="">
-          <div class="description">
-              <p class="name">Furniture</p>
-              <p class="price">199$</p>
-              <p class="availability">In Stock</p>
-              <p class="descr">test test test</p>
-          </div>
-          <div class="overlay">
-              <i class="fa fa-heart"></i> 
-          </div>
-        </div>
-
-       <div class="card living">
-          <img src="images/products/living1.jpg" alt="">
-          <div class="description">
-              <p class="name">Furniture</p>
-              <p class="price">199$</p>
-              <p class="availability">In Stock</p>
-              <p class="descr">test test test</p>
-          </div>
-          <div class="overlay">
-              <i class="fa fa-heart"></i> 
-          </div>
-      </div>
-
-      <div class="card living">
-          <img src="images/products/living2.jpg" alt="">
-          <div class="description">
-              <p class="name">Furniture</p>
-              <p class="price">199$</p>
-              <p class="availability">In Stock</p>
-              <p class="descr">test test test</p>
-          </div>
-          <div class="overlay">
-              <i class="fa fa-heart"></i> 
-          </div>
-      </div>
-
-      <div class="card living">
-          <img src="images/products/living3.jpg" alt="">
-          <div class="description">
-              <p class="name">Furniture</p>
-              <p class="price">199$</p>
-              <p class="availability">In Stock</p>
-              <p class="descr">test test test</p>
-          </div>
-          <div class="overlay">
-              <i class="fa fa-heart"></i> 
-          </div>
-      </div>
-
-      <div class="card living">
-          <img src="images/products/living4.jpg" alt="">
-          <div class="description">
-              <p class="name">Furniture</p>
-              <p class="price">199$</p>
-              <p class="availability">In Stock</p>
-              <p class="descr">test test test</p>
-          </div>
-          <div class="overlay">
-              <i class="fa fa-heart"></i> 
-          </div>
-      </div>
-
-      <div class="card dining">
-        <img src="images/products/dining1.jpg" alt="">
-        <div class="description">
-            <p class="name">Furniture</p>
-            <p class="price">199$</p>
-            <p class="availability">In Stock</p>
-            <p class="descr">test test test</p>
-        </div>
-        <div class="overlay">
-            <i class="fa fa-heart"></i> 
-        </div>
-      </div>
-      
-      <div class="card dining">
-        <img src="images/products/dining2.jpg" alt="">
-        <div class="description">
-            <p class="name">Furniture</p>
-            <p class="price">199$</p>
-            <p class="availability">In Stock</p>
-            <p class="descr">test test test</p>
-        </div>
-        <div class="overlay">
-            <i class="fa fa-heart"></i> 
-        </div>
-      </div>
-
-      <div class="card dining">
-        <img src="images/products/dining3.jpg" alt="">
-        <div class="description">
-            <p class="name">Furniture</p>
-            <p class="price">199$</p>
-            <p class="availability">In Stock</p>
-            <p class="descr">test test test</p>
-        </div>
-        <div class="overlay">
-            <i class="fa fa-heart"></i> 
-        </div>
-      </div>
-
-      <div class="card dining">
-        <img src="images/products/dining4.jpg" alt="">
-        <div class="description">
-            <p class="name">Furniture</p>
-            <p class="price">199$</p>
-            <p class="availability">In Stock</p>
-            <p class="descr">test test test</p>
-        </div>
-        <div class="overlay">
-            <i class="fa fa-heart"></i> 
-        </div>
-      </div> -->
+        <div class="card" hidden>
+            <img src="images/products/bed1.jpg">
+            <div class="description">
+                <a href=""><p class="name"></p></a>
+                <p class="price"></p>
+                <p class="availability"></p>
+                <p class="descr"></p>
+            </div>
+            <button class="add">Add to cart</button>
+            <div class="overlay">
+                <i class="fa fa-heart"></i> 
+            </div>
+        </div> 
      </div>
    </section>
  
  </main>
+
  <footer>
     <form action="action_page.php">
         <div class="container">
