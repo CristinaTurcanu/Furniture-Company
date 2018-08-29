@@ -19,7 +19,7 @@ body {
 
 main h1 {
     margin-top: 5rem;
-    font-size:4rem;
+    font-size: 4rem;
     color: #777;
     text-align: center;
     font-family: 'Cabin', sans-serif;
@@ -73,7 +73,7 @@ main h1 {
     color: rgb(68, 61, 46);
 }
 .products .cards .card .description .price {
-    font-size: 21px;
+    font-size: 18px;
     color: rgb(184, 153, 91);
     font-weight: bold;
 }
@@ -89,7 +89,11 @@ main h1 {
     grid-column-start: 1;
     grid-column-end: 4;
 }
-.products .cards .card .add{
+.products .cards .card .shopping {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.products .cards .card .shopping .add{
     max-height: 30px;
     outline: none;
     font-size: 16px;
@@ -98,10 +102,14 @@ main h1 {
     border-top: 2px solid #999;
     background-color: #fff;
 }
-.products .cards .card .add:hover {
+.products .cards .card .shopping .add:hover {
     color: #333;
     font-weight: bold;
 }
+.products .cards .card .shopping select {
+    height: 30px;
+    font-size: 15px;
+} 
 .categories {
     display: flex;
     flex-direction: column;

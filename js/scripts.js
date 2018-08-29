@@ -59,6 +59,7 @@ $(document).ready(() => {
     product.price = card.find('.description .price').text()
     product.availability = card.find('.description .availability').text()
     product.img = card.find('img').attr('src');
+    // product.quantity = card.find('.shopping select option:selected').text()
 
     wishlist.products.push(product);
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -76,7 +77,14 @@ function generateCard(furniture, catId) {
                 <p class="availability">${furniture.availability}</p>
                 <p class="descr">${furniture.description}</p>
             </div>
-            <button class="add">Add to cart</button>
+            <div class="shopping">
+              <button class="add">Add to cart</button>
+              <select id="inputQuantity" class="form-control">
+                <option selected>1</option>
+                <option>2</option>
+                <option>2</option>
+              </select>
+            </div>
             <div class="overlay">
                 <i class="fa fa-heart"></i> 
             </div>

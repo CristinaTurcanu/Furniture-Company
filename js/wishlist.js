@@ -10,11 +10,20 @@ $(document).ready(() => {
     }
 
     for(product of wishlist.products) {
-        wishlistContainer.append(addWish())
+        wishlistContainer.append(addWish(product))
+    }
+
+    let delButton = $('.wishlist .table tbody tr .del');
+    let i;
+    for (i = 0; i < delButton.length; i++) {
+        delButton[i].addEventListener("click", function() {
+        this.parentElement.style.display = 'none';
+        localStorage.removeItem(product);
+      })
     }
 });
 
-function addWish() {
+function addWish(product) {
     return `<tr>
                 <th scope="row">
                 <img src="${product.img}">
@@ -22,8 +31,6 @@ function addWish() {
                 <td>${product.name}</td>
                 <td>${product.availability}</td>
                 <td>${product.price}</td>
-                <td>${product.quantity}</td>
-                <td>${product.total}</td>
                 <td class="add">Add</td>
                 <td class="del">X</td>
             </tr>`;
