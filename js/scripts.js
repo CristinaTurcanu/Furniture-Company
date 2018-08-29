@@ -31,30 +31,44 @@ $(document).ready(() => {
       .then( furnitures => {
           cardContainer = $(".products .cards");
           cardContainer.children('.card').remove();
-          // cardTemplate = cardContainer.find('.card');
           for (furniture of furnitures) {
               if (furniture.visible) {
-                
-                  // let card = cardTemplate.clone()
-                  // card.prop('hidden', false);
-                  // card.attr('data-id', furniture.id);
-                  // card.addClass('cln');
-                  // card.find('.description .name').text(furniture.name)
-                  // card.find('.description .price').text(furniture.price + ' $')
-                  // card.find('.description .availability').text(furniture.availability)                  
-                  // card.find('.description .descr').text(furniture.description)
-                  cardContainer.append(generateCard(furniture, catId));
+                cardContainer.append(generateCard(furniture, catId));
               }
           }
       });
     });
+  
+  $(document).on('click', '.products .cards .card .overlay i', (evt) => {
+    i = $(evt.target);
+    console.log("Added to wishlist");
+
+    let wishlist = localStorage.getItem('wishlist');
+      if(wishlist) {
+        wishlist = JSON.parse(wishlist);    
+      } else {
+        wishlist = {};
+        wishlist.products = [];
+      }
+
+    card = i.closest('.card');
+
+    let product = {};
+    product.name = card.find('.products .cards .card .description .name')
+    product.price = card.find('.products .cards .card .description .price')
+    product.availability = card.find('.products .cards .card .description .availability')
+    product.img = card.find('.products .cards .card .image img')
+
+    wishlist.products.push(product);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
   });
 
+});
 
 
 function generateCard(furniture, catId) {
   return `<div class="card">
-            <img src="images/products/bed1.jpg" alt="">
+            <img src="images/products/frn${furniture.id}.jpg">
             <div class="description">
                 <a href="product-details.html?cid=${catId}&fid=${furniture.id}"><p class="name">${furniture.name}</p></a>
                 <p class="price">${furniture.price + ' $'}</p>

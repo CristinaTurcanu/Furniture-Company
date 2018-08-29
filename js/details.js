@@ -18,8 +18,9 @@ $(document).ready(() => {
         })
         .then(productDetail => {
           if (productDetail.visible) {
+            $('.prod-details .image img').attr('src', `images/products/frn${furnitureId}.jpg`);
             for (field in productDetail) {
-              let div = $(`.prod-details .details .${field}`);
+              let div = $(`.prod-details .details .${field} span`);
               if (div.length) {
                 div.text(productDetail[field]);
               }

@@ -8,13 +8,23 @@
   margin: 0;
 }
 body {
-    padding: 10rem 0;
+    padding: 6rem 0;
 }
-.list-group-item {
-    display: flex;
-    justify-content: space-between;
+.wishlist {
+    width: 64%;
+    margin: 0 auto;
+    padding-bottom: 7rem;
 }
-.list-group-item img {
-    width: 70px;
+.wishlist h3 {
+    font-size: 5.3rem;
+    color: #777;
+    text-align: center;
+    font-family: 'Cabin', sans-serif;
+}
+.table tbody > tr > th > img {
+    width: 80px;
     height: 70px;
+}
+.table tbody > tr > td {
+    vertical-align: middle;
 }

@@ -12,14 +12,15 @@ body {
   padding-top: 7rem; 
 }
 .prod-details{
-    width: 56%;
+    width: 50%;
     margin: 0 auto;
     background-color: #fff;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    padding-bottom: 8rem;
 }
 .prod-details .image img {
-    max-width: 560px;
+    max-width: 500px;
     height: auto;
 }
 .prod-details .details {

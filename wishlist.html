@@ -38,79 +38,78 @@
           </ul>
           <ul class="nav navbar-nav mr-0 user">
             <li class="nav-item">
-              <a class="nav-link dropdown" href="login.html"><i class="fa fa-user"></i></a>
-              <div class="dropdown-content">
-                  <a href="login.html">Create an account</a>
-                  <a href="#">Login</a>
-                  <a href="#">Logout</a>
-              </div>
+              <a class="nav-link" href="login.html"><i class="fa fa-user"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link dropdown"><i class="fa fa-shopping-cart"></i></a>
-              <div class="dropdown-content">
-                  <a href="#">Create an account</a>
-              </div>
+              <a class="nav-link" href="wishlist.html"><i class="fa fa-shopping-cart"></i></a>
             </li>
           </ul>
         </div>
       </nav>
-    </header>
+  </header>
     <main role="main">
 
-    <div class="container wishlist">
-        <ul class="list-group">
-            <li class="list-group-item">
-                <img src="images/products/living3.jpg" alt="">
-                <p class="name">Pink Armchair</p>
-                <p class="price">20</p>
-                <span class="close">x</span>
-                <span class="add">+</span>
-            </li>
-            <li class="list-group-item">
-                <img src="" alt="">
-                <p class="name"></p>
-                <p class="price"></p>
-                <span class="close">x</span>
-                <span class="add">+</span>
-            </li>
-            <li class="list-group-item">
-                <img src="" alt="">
-                <p class="name"></p>
-                <p class="price"></p>
-                <span class="close">x</span>
-                <span class="add">+</span>
-            </li>
-            <li class="list-group-item">
-                <img src="" alt="">
-                <p class="name"></p>
-                <p class="price"></p>
-                <span class="close">x</span>
-                <span class="add">+</span>
-            </li>
-        </ul>
+    <div class="wishlist">
+      <h3>Wishlist</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Add to cart</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <img src="images/products/frn4.jpg">
+            </th>
+            <td>Name</td>
+            <td>Price</td>
+            <td>In Stock</td>
+            <td class="add">Add</td>
+            <td class="del">X</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <img src="images/products/frn3.jpg">
+            </th>
+            <td>Name</td>
+            <td>Price</td>
+            <td>In Stock</td>
+            <td class="add">Add</td>
+            <td class="del">X</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
 
-        <footer>
-            <form action="action_page.php">
-                <div class="container">
-                    <h2>Subscribe to receive the best offers</h2>
-                    <input type="text" placeholder="Name" name="name" required>
-                    <input type="text" placeholder="Email address" name="mail" required>
-                </div>
-                <div class="container">
-                    <input type="submit" value="Subscribe">
-                </div>
-                </form>
-            <p class="float-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2010-2018 Aspan Furniture Company, Inc. &middot; <a href="#">Privacy Policy</a> &middot; <a href="#">Responsible Disclosure</a></p>
-        </footer>
-     </main>
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-     <script>window.jQuery || document.write('<script src="js/jquery.slim.min.js"><\/script>')</script>
-     <script src="js/popper.min.js"></script>
-     <script src="js/bootstrap.min.js"></script>
-     <script src="js/holder.min.js"></script>
-     <script src="js/scripts.js"></script>
+    <footer>
+        <form action="action_page.php">
+            <div class="container">
+                <h2>Subscribe to receive the best offers</h2>
+                <input type="text" placeholder="Name" name="name" required>
+                <input type="text" placeholder="Email address" name="mail" required>
+            </div>
+            <div class="container">
+                <input type="submit" value="Subscribe">
+            </div>
+            </form>
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2010-2018 Aspan Furniture Company, Inc. &middot; <a href="#">Privacy Policy</a> &middot; <a href="#">Responsible Disclosure</a></p>
+    </footer>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.slim.min.js"><\/script>')</script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/holder.min.js"></script>
+    <!-- <script src="js/scripts.js"></script> -->
+    <script src="js/wishlist.js"></script>
    </body>
  </html>
