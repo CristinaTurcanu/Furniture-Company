@@ -41,8 +41,9 @@ $(document).ready(() => {
   
   $(document).on('click', '.products .cards .card .overlay i', (evt) => {
     i = $(evt.target);
+    i.closest('.overlay').addClass('added');
     console.log("Added to wishlist");
-
+  
     let wishlist = localStorage.getItem('wishlist');
       if(wishlist) {
         wishlist = JSON.parse(wishlist);    
@@ -54,10 +55,10 @@ $(document).ready(() => {
     card = i.closest('.card');
 
     let product = {};
-    product.name = card.find('.products .cards .card .description .name')
-    product.price = card.find('.products .cards .card .description .price')
-    product.availability = card.find('.products .cards .card .description .availability')
-    product.img = card.find('.products .cards .card .image img')
+    product.name = card.find('.description .name').text()
+    product.price = card.find('.description .price').text()
+    product.availability = card.find('.description .availability').text()
+    product.img = card.find('img').attr('src');
 
     wishlist.products.push(product);
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
