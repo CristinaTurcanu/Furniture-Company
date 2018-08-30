@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Aspan Furniture</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/product-details.css" rel="stylesheet">
+    <link href="css/cart.css" rel="stylesheet">
   </head>
   <body>
 
@@ -51,49 +50,52 @@
         </div>
       </nav>
   </header>
-  <main>
-    <section class="prod-details">
-        <div class="image">
-            <img src="">
-        </div>
-        <div class="details">
-            <h3 class="name"><span></span></h3>
-            <hr>
-            <p class="price"><span></span>$</p>
-            <p class="description"><span></span></p>
-            <p class="color">Color: <span></span></p>
-            <p class="availability">Availability: <span></span></p>
+    <main role="main">
 
-            <div class="shop">
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                </select>
-                <button class="add">Add to cart</button>
-            </div>
-        </div>
-    </section>
+    <div class="cart">
+      <h3>Shopping Cart</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Color</th>
+            <th scope="col">Price/unit</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total price</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
 
     <footer>
         <form action="action_page.php">
             <div class="container">
-              <h2>Subscribe to receive the best offers</h2>
-              <input type="text" placeholder="Name" name="name" required>
-              <input type="text" placeholder="Email address" name="mail" required>
+                <h2>Subscribe to receive the best offers</h2>
+                <input type="text" placeholder="Name" name="name" required>
+                <input type="text" placeholder="Email address" name="mail" required>
             </div>
             <div class="container">
-              <input type="submit" value="Subscribe">
+                <input type="submit" value="Subscribe">
             </div>
-          </form>
+            </form>
         <p class="float-right"><a href="#">Back to top</a></p>
         <p>&copy; 2010-2018 Aspan Furniture Company, Inc. &middot; <a href="#">Privacy Policy</a> &middot; <a href="#">Responsible Disclosure</a></p>
     </footer>
-  </main>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/jquery.slim.min.js"><\/script>')</script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/holder.min.js"></script>
-  <script src="js/details.js"></script>
-</body>
-</html>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.slim.min.js"><\/script>')</script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/holder.min.js"></script>
+    <script src="js/cart.js"></script>
+   </body>
+ </html>

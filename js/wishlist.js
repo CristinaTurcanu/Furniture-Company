@@ -9,22 +9,21 @@ $(document).ready(() => {
             .css('font-size', '30px');
     }
 
-    for(product of wishlist.products) {
-        wishlistContainer.append(addWish(product))
+    for (product of wishlist.products) {
+        wishlistContainer.append(addToWishlist(product))
     }
 
-    let delButton = $('.wishlist .table tbody tr .del');
-    let i;
-    for (i = 0; i < delButton.length; i++) {
-        delButton[i].addEventListener("click", function() {
-        this.parentElement.style.display = 'none';
-        localStorage.removeItem(product);
-      })
-    }
+    wishlistContainer.on("click", ".del", evt => {
+        let delButton = $(evt.target);
+        tr = delButton.closest("tr");
+        tr.hide();
+        cid = tr.data("cid");
+        fid = tr.data("fid");
+    });
 });
 
-function addWish(product) {
-    return `<tr>
+function addToWishlist(product) {
+    return `<tr data-fid="${product.fid}" data-cid="${product.cid}">
                 <th scope="row">
                 <img src="${product.img}">
                 </th>

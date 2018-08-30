@@ -1,0 +1,41 @@
+
+@import "sections/nav.css";
+@import "sections/footer.css";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+    padding: 6rem 0;
+}
+.cart {
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 7rem;
+}
+.cart h3 {
+    font-size: 5.3rem;
+    color: #777;
+    text-align: center;
+    font-family: 'Cabin', sans-serif;
+}
+.table tbody > tr > th > img {
+    width: 80px;
+    height: 70px;
+} 
+.table {
+    text-align: center;
+    font-size: 18px;
+}
+.table tbody tr .add,
+.table tbody tr .del {
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(128, 50, 50);
+    font-weight: bold;
+}
+.table tbody tr .add {
+    color: rgb(82, 110, 56);
+}

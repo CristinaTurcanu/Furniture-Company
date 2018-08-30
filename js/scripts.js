@@ -55,9 +55,11 @@ $(document).ready(() => {
     card = i.closest('.card');
 
     let product = {};
-    product.name = card.find('.description .name').text()
-    product.price = card.find('.description .price').text()
-    product.availability = card.find('.description .availability').text()
+    product.fid = card.attr('data-fid');
+    product.cid = card.attr('data-cid');
+    product.name = card.find('.description .name').text();
+    product.price = card.find('.description .price').text();
+    product.availability = card.find('.description .availability').text();
     product.img = card.find('img').attr('src');
     // product.quantity = card.find('.shopping select option:selected').text()
 
@@ -69,11 +71,11 @@ $(document).ready(() => {
 
 
 function generateCard(furniture, catId) {
-  return `<div class="card">
+  return `<div class="card" data-fid="${furniture.id}" data-cid="${catId}">
             <img src="images/products/frn${furniture.id}.jpg">
             <div class="description">
                 <a href="product-details.html?cid=${catId}&fid=${furniture.id}"><p class="name">${furniture.name}</p></a>
-                <p class="price">${furniture.price + ' $'}</p>
+                <p class="price">${furniture.price + '$'}</p>
                 <p class="availability">${furniture.availability}</p>
                 <p class="descr">${furniture.description}</p>
             </div>
