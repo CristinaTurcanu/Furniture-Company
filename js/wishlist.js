@@ -10,8 +10,8 @@ $(document).ready(() => {
     }
 
     for (product of wishlist.products) {
-        wishlistContainer.append(addToWishlist(product))
-    }
+        wishlistContainer.append(addToWishlist(product));
+    }    
 
     wishlistContainer.on("click", ".del", evt => {
         let delButton = $(evt.target);
@@ -19,6 +19,10 @@ $(document).ready(() => {
         tr.hide();
         cid = tr.data("cid");
         fid = tr.data("fid");
+        wishlist.products = wishlist.products.filter(
+            product => +product.fid !== fid 
+        );
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
     });
 });
 
