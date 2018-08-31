@@ -42,7 +42,7 @@ $(document).ready(() => {
   $(document).on('click', '.products .cards .card .overlay i', (evt) => {
     i = $(evt.target);
     i.closest('.overlay').addClass('added');
-  
+
     let wishlist = localStorage.getItem('wishlist');
       if(wishlist) {
         wishlist = JSON.parse(wishlist);    
@@ -51,8 +51,6 @@ $(document).ready(() => {
       }
 
     card = i.closest('.card');
-    fid = card.attr('data-fid');
-
     let product = {};
     product.fid = card.attr('data-fid');
     product.name = card.find('.description .name').text();
@@ -61,8 +59,8 @@ $(document).ready(() => {
     product.img = card.find('img').attr('src');
 
     let allowToAdd = true;
-    for (product of wishlist.products) {
-      if (product.fid == fid) {
+    for (prod of wishlist.products) {
+      if (prod.fid == product.fid) {
         allowToAdd = false;
       }
     }
@@ -93,7 +91,16 @@ $(document).ready(() => {
     product.quantity = +card.find('.shopping select option').filter(":selected").text();
     product.total = product.price * product.quantity;
 
-    cart.products.push(product);
+    let addToCart = true;
+    for( prod of cart.products) {
+      if(prod.fid == product.fid) {
+        addToCart = false;
+        prod.quantity += product.quantity;
+      }
+    }
+    if(addToCart) {
+      cart.products.push(product);
+    }
     localStorage.setItem('cart', JSON.stringify(cart));
   });
 });
