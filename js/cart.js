@@ -9,13 +9,30 @@ $(document).ready(() => {
             .css('font-size', '30px');
     }
 
-    var totalPrice = 0;
-    for(product of cart.products) {
+    var totalProductsPrice = 0;
+
+    for (product of cart.products) {
         shoppingCart.append(addToCart(product));
-        totalPrice += product.total;
+        totalProductsPrice += product.total;
     }
+
+    // cartContainer = document.getElementById("cartContainer");
+    // tr = cartContainer.getElementsBytagNames("tr");
+    productTotal = document.getElementById("productTotal");
+    inputQ = document.getElementById("inputQuantity");
+
+    inputQ.addEventListener("change", function(input) {
+        let productPrice = parseFloat(document.getElementById("productPrice").textContent);
+        inputQ.setAttribute("value", input.value);
+        quantity = inputQ.value;
+        let totalProductPrice = productPrice * quantity;
+        productTotal.textContent = totalProductPrice;
+    });
+
+
+
     let totalSum = document.getElementById("totalSum");
-    totalSum.textContent = totalPrice + " $";
+    totalSum.textContent = totalProductsPrice + " $";
 
     shoppingCart.on("click", ".del", evt => {
         let delButton = $(evt.target);
@@ -25,15 +42,16 @@ $(document).ready(() => {
         cart.products = cart.products.filter(
             product => +product.fid !== fid 
         );
-        // for(product of cart.products) {
-        //     totalPrice += product.total;
-        //     totalSum.textContent = totalPrice + " $";
-        // }
-
+        let totalProductsPrice = 0;
+        for(product of cart.products) {
+            totalProductsPrice += product.total;
+        }
+        totalSum.textContent = totalProductsPrice + " $";
         localStorage.setItem('cart', JSON.stringify(cart));
     });
-
 });
+
+
 
 function addToCart(product) {
     return `<tr data-fid="${product.fid}">
@@ -43,9 +61,11 @@ function addToCart(product) {
                 <td>${product.name}</td>
                 <td>${product.availability}</td>
                 <td>${product.color}</td>
-                <td>${product.price}</td>
-                <td>${product.quantity}</td>
-                <td>${product.total}</td>                
+                <td id="productPrice">${product.price}</td>
+                <td>
+                    <input type="number" id="inputQuantity" value="${product.quantity}" min="1" max="5">
+                </td>
+                <td id="productTotal">${product.total}</td>                
                 <td class="del">X</td>
             </tr>`;
 }

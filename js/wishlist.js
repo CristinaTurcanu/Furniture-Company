@@ -14,7 +14,7 @@
 // function deleteProduct (event) {
 //     let del = event.target;
 //     tr = del.closest("tr");
-//     tr.hide();
+//     tr.style.display = "none";
 //     fid = tr.getAttribute("data-fid");
 //     wishlist.products = wishlist.products.filter(
 //         product => +product.fid !== fid 
@@ -36,6 +36,25 @@ $(document).ready(() => {
         wishlistContainer.append(addToWishlist(product));
     }   
 
+    wishlistContainer.on("click", ".add", evt => {
+        let addBtn = $(evt.target);
+        tr = addBtn.closest("tr");
+        addBtn.addClass("added");
+
+        cart = JSON.parse(localStorage.getItem('cart'));
+        let addToCart = true;
+        for( prod of cart.products) {
+          if(prod.fid == product.fid) {
+            addToCart = false;
+            prod.quantity += product.quantity;
+          }
+        }
+        if(addToCart) {
+          cart.products.push(product);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+    });
+
     wishlistContainer.on("click", ".del", evt => {
         let delButton = $(evt.target);
         tr = delButton.closest("tr");
@@ -47,6 +66,7 @@ $(document).ready(() => {
         );
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
     });
+    
 });
 
 function addToWishlist(product) {
