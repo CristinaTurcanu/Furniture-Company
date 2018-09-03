@@ -24,11 +24,8 @@ $(document).ready(() => {
     furnituresUrl = `${categoryUrl}${catId}/furnitures`;
 
     fetch(furnituresUrl)
-      .then((response) => {
-        return response.json();
-      })
-
-      .then( furnitures => {
+      .then(response => response.json())
+      .then((furnitures) => {
           cardContainer = $(".products .cards");
           cardContainer.children('.card').remove();
           for (furniture of furnitures) {
@@ -38,7 +35,7 @@ $(document).ready(() => {
           }
       });
     });
-  
+  // Add to wishlist when clicking on the product and push the product to localStorage cart
   $(document).on('click', '.products .cards .card .overlay i', (evt) => {
     i = $(evt.target);
     i.closest('.overlay').addClass('added');
@@ -70,9 +67,10 @@ $(document).ready(() => {
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
   });
 
+// Add product to shopping list from products list and push it to localStorage cart
   $(document).on('click', '.products .cards .card .shopping .add', (evt) => {
     addBtn = $(evt.target);
-    addBtn.addClass("added");
+    addBtn.text("Added");
 
     let cart = localStorage.getItem('cart');
       if(cart) {

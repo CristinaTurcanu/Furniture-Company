@@ -14,7 +14,6 @@
 // function deleteProduct (event) {
 //     let del = event.target;
 //     tr = del.closest("tr");
-//     tr.style.display = "none";
 //     fid = tr.getAttribute("data-fid");
 //     wishlist.products = wishlist.products.filter(
 //         product => +product.fid !== fid 
@@ -36,10 +35,10 @@ $(document).ready(() => {
         wishlistContainer.append(addToWishlist(product));
     }   
 
+    // Add product from wishlist to shopping cart
     wishlistContainer.on("click", ".add", evt => {
         let addBtn = $(evt.target);
-        tr = addBtn.closest("tr");
-        addBtn.addClass("added");
+        addBtn.text("Added");
 
         cart = JSON.parse(localStorage.getItem('cart'));
         let addToCart = true;
@@ -55,6 +54,7 @@ $(document).ready(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     });
 
+    // Delete a product from wishlist
     wishlistContainer.on("click", ".del", evt => {
         let delButton = $(evt.target);
         tr = delButton.closest("tr");
@@ -70,7 +70,7 @@ $(document).ready(() => {
 });
 
 function addToWishlist(product) {
-    return `<tr data-fid="${product.fid}" data-cid="${product.cid}">
+    return `<tr data-fid="${product.fid}" data-cid="${product.cid}" class="product">
                 <th scope="row">
                 <img src="${product.img}">
                 </th>
