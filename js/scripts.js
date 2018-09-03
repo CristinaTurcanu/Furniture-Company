@@ -1,22 +1,22 @@
-$(document).ready(() => {
 
-  categoryContainer = $('.products .categories');
-  let categoryUrl = "http://iw-internship.herokuapp.com/api/v1/furniture-categories/";
-  fetch(categoryUrl)
-  .then(response => {
-    return response.json();
-  })
+let categoryContainer = document.getElementById("categories");
+let categoryUrl = "http://iw-internship.herokuapp.com/api/v1/furniture-categories/";
+fetch(categoryUrl)
+  .then(response => response.json())
   .then((categories) => {
-    for (category of categories) {
+    for(category of categories) {
       if(category.visible) {
-        btn = $('<button class=btn/>');
-        btn.text(category.name);
-        btn.attr('data-id', category.id);
-        categoryContainer.append(btn);
+        btn = document.createElement("button");
+        btn.classList.add("btn");
+        btn.textContent = category.name;
+        btn.setAttribute("data-id", category.id);
+        categoryContainer.appendChild(btn);
       }
     }
   });
 
+
+$(document).ready(() => {
   $(document).on('click', '.products .categories .btn', (evt) => {
     let target = $(evt.target);
     const catId = target.data("id");
@@ -72,6 +72,7 @@ $(document).ready(() => {
 
   $(document).on('click', '.products .cards .card .shopping .add', (evt) => {
     addBtn = $(evt.target);
+    addBtn.addClass("added");
 
     let cart = localStorage.getItem('cart');
       if(cart) {
@@ -122,6 +123,8 @@ function generateCard(furniture, catId) {
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
             <div class="overlay">

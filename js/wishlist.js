@@ -1,3 +1,27 @@
+
+// wishlistContainer = document.getElementById("wishlistContainer");
+//  if(localStorage.wishlist) {
+//      wishlist = JSON.parse(localStorage.getItem("wishlist"));
+//  } else {
+//      wishlistContainer.textContent = "Wishlist is empty!";
+//  }
+//  for(product of wishlist.products) {
+//      wishlistContainer.appendChild(addToWishlist());
+//  }
+//  delBtn = document.getElementsByClassName("del");
+//  delBtn.addEventListener("click", deleteProduct, false);
+
+// function deleteProduct (event) {
+//     let del = event.target;
+//     tr = del.closest("tr");
+//     tr.hide();
+//     fid = tr.getAttribute("data-fid");
+//     wishlist.products = wishlist.products.filter(
+//         product => +product.fid !== fid 
+//     );
+//     localStorage.setItem('wishlist', JSON.stringify(wishlist));
+// }
+
 $(document).ready(() => {
     wishlistContainer = $('.wishlist .table tbody');
 
@@ -8,10 +32,9 @@ $(document).ready(() => {
             .text("Wishlist is empty")
             .css('font-size', '30px');
     }
-
     for (product of wishlist.products) {
         wishlistContainer.append(addToWishlist(product));
-    }    
+    }   
 
     wishlistContainer.on("click", ".del", evt => {
         let delButton = $(evt.target);

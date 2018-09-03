@@ -9,9 +9,14 @@ $(document).ready(() => {
             .css('font-size', '30px');
     }
 
+    var totalPrice = 0;
     for(product of cart.products) {
         shoppingCart.append(addToCart(product));
+        totalPrice += product.total;
     }
+    let totalSum = document.getElementById("totalSum");
+    totalSum.textContent = totalPrice + " $";
+
     shoppingCart.on("click", ".del", evt => {
         let delButton = $(evt.target);
         tr = delButton.closest("tr");
@@ -20,6 +25,11 @@ $(document).ready(() => {
         cart.products = cart.products.filter(
             product => +product.fid !== fid 
         );
+        // for(product of cart.products) {
+        //     totalPrice += product.total;
+        //     totalSum.textContent = totalPrice + " $";
+        // }
+
         localStorage.setItem('cart', JSON.stringify(cart));
     });
 

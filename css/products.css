@@ -102,6 +102,10 @@ main h1 {
     border-top: 2px solid #999;
     background-color: #fff;
 }
+.products .cards .card .shopping .added::after {
+    content: "- Added";
+}
+
 .products .cards .card .shopping .add:hover {
     color: #333;
     font-weight: bold;
