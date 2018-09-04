@@ -23,8 +23,8 @@
 
 $(document).ready(() => {
     wishlistContainer = $('.wishlist .table tbody');
-
-    if(localStorage.wishlist) {
+    let wishlist = { "products": [] };
+    if (localStorage.wishlist) {
         wishlist = JSON.parse(localStorage.getItem('wishlist'))
     } else {
         wishlistContainer
@@ -32,8 +32,9 @@ $(document).ready(() => {
             .css('font-size', '30px');
     }
     for (product of wishlist.products) {
-        wishlistContainer.append(addToWishlist(product));
-    }   
+        // wishlistContainer.append(addToWishlist(product));
+        wishlistContainer[0].innerHTML += addToWishlist(product)
+    }
 
     // Add product from wishlist to shopping cart
     wishlistContainer.on("click", ".add", evt => {
@@ -42,16 +43,16 @@ $(document).ready(() => {
 
         cart = JSON.parse(localStorage.getItem('cart'));
         let addToCart = true;
-        for( prod of cart.products) {
-          if(prod.fid == product.fid) {
-            addToCart = false;
-            prod.quantity += product.quantity;
-          }
+        for (prod of cart.products) {
+            if (prod.fid == product.fid) {
+                addToCart = false;
+                prod.quantity += product.quantity;
+            }
         }
-        if(addToCart) {
-          cart.products.push(product);
-          product.quantity = 1;
-          product.total = parseFloat(product.price * product.quantity);
+        if (addToCart) {
+            cart.products.push(product);
+            product.quantity = 1;
+            product.total = parseFloat(product.price * product.quantity);
         }
         localStorage.setItem('cart', JSON.stringify(cart));
     });
@@ -64,11 +65,11 @@ $(document).ready(() => {
         cid = tr.data("cid");
         fid = tr.data("fid");
         wishlist.products = wishlist.products.filter(
-            product => +product.fid !== fid 
+            product => +product.fid !== fid
         );
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
     });
-    
+
 });
 
 function addToWishlist(product) {
