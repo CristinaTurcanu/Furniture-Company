@@ -51,23 +51,27 @@
         </div>
       </nav>
   </header>
+
   <main>
-    <section class="prod-details">
+    <section class="prod-details" id="prod-details">
         <div class="image">
-            <img src="">
+            <img  id="img" src="">
         </div>
         <div class="details">
-            <h3 class="name"><span></span></h3>
+            <h3 class="name"><span id="name"></span></h3>
             <hr>
-            <p class="price"><span></span>$</p>
-            <p class="description"><span></span></p>
-            <p class="color">Color: <span></span></p>
-            <p class="availability">Availability: <span></span></p>
+            <p class="price"><span id="price"></span>$</p>
+            <p class="description"><span id="description"></span></p>
+            <p class="color">Color: <span id="color"></span></p>
+            <p class="availability">Availability: <span id="availability"></span></p>
 
             <div class="shop">
-                <select>
-                    <option>1</option>
-                    <option>2</option>
+                <select id="selectQuantity">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
                 <button class="add">Add to cart</button>
             </div>

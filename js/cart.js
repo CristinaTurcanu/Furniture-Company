@@ -1,3 +1,4 @@
+
 $(document).ready(() => {
     shoppingCart = $('.cart .table tbody');
 
@@ -10,22 +11,33 @@ $(document).ready(() => {
     }
 
     var totalProductsPrice = 0;
-
     for (product of cart.products) {
         shoppingCart.append(addToCart(product));
         totalProductsPrice += product.total;
     }
+    let totalSum = document.getElementById("totalSum");
+    totalSum.textContent = totalProductsPrice + " $";
 
     // Change the quantity of one product and update total price for that product 
     shoppingCart.on("click", ".inputQuantity", (evt) => {
         let input = $(evt.target);
         let tr = input.closest("tr");
         let price = parseFloat(tr.find(".productPrice").text());
-
+        let productTotal = tr.find(".productTotal").text(price * input.val());
+        productTotal = parseFloat(productTotal.text());
+        // Update total sum
+        let totalProductsPrice = 0;
+        
+        for (prod of cart.products) {
+            if (prod.fid == tr.data("fid")) {
+              prod.quantity = input.val();
+              prod.total = prod.price * prod.quantity;
+            }
+            totalProductsPrice += parseFloat(prod.total);
+          }
+          totalSum.textContent = totalProductsPrice + " $";
+          localStorage.setItem("cart", JSON.stringify(cart));
     });
-
-    let totalSum = document.getElementById("totalSum");
-    totalSum.textContent = totalProductsPrice + " $";
 
 
     // Delete a product from shopping cart and update total Products price

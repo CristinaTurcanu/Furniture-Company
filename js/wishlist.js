@@ -70,11 +70,12 @@ $(document).ready(() => {
 });
 
 function addToWishlist(product) {
-    return `<tr data-fid="${product.fid}" data-cid="${product.cid}" class="product">
+    return `<tr data-fid="${product.fid}" data-cid="${product.cid}">
                 <th scope="row">
                 <img src="${product.img}">
                 </th>
                 <td>${product.name}</td>
+                <td hidden>${product.color}</td>
                 <td>${product.availability}</td>
                 <td>${product.price}</td>
                 <td class="add">Add</td>

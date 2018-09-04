@@ -52,6 +52,7 @@ $(document).ready(() => {
     product.fid = card.attr('data-fid');
     product.name = card.find('.description .name').text();
     product.price = card.find('.description .price').text();
+    product.color = card.find('.description .color').text();
     product.availability = card.find('.description .availability').text();
     product.img = card.find('img').attr('src');
 
@@ -86,8 +87,8 @@ $(document).ready(() => {
     product.name = card.find('.description .name').text();
     product.availability = card.find('.description .availability').text();
     product.color = card.find('.description .color').text();
-    product.price = +card.find('.description .price').text();
-    product.quantity = +card.find('.shopping select option').filter(":selected").text();
+    product.price = parseFloat(card.find('.description .price').text());
+    product.quantity = parseFloat(card.find('.shopping select option').filter(":selected").text());
     product.total = product.price * product.quantity;
 
     let addToCart = true;
