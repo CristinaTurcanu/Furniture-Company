@@ -15,14 +15,31 @@ fetch(categoryUrl)
     }
   });
 
-
+// categoryContainer.addEventListener("click", selectCategory, false);
+// function selectCategory(evt) {
+//   let target = event.target;
+//   const catId = target.dataset.id;
+//   furnituresUrl = `${categoryUrl}${catId}/furnitures`;
+//   fetch(furnituresUrl)
+//     .then(response => response.json())
+//     .then((furnitures) => {
+//         cardContainer = document.getElementById("cards");
+//         while (cardContainer.firstChild) {
+//           cardContainer.removeChild(cardContainer.firstChild);
+//         }
+//         for (furniture of furnitures) {
+//             if (furniture.visible) {
+//               cardContainer.appendChild(generateCard(furniture, catId));
+//             }
+//         }
+//     });
+// }
 $(document).ready(() => {
   $(document).on('click', '.products .categories .btn', (evt) => {
     let target = $(evt.target);
     const catId = target.data("id");
 
     furnituresUrl = `${categoryUrl}${catId}/furnitures`;
-
     fetch(furnituresUrl)
       .then(response => response.json())
       .then((furnitures) => {

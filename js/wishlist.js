@@ -14,7 +14,7 @@
 // function deleteProduct (event) {
 //     let del = event.target;
 //     tr = del.closest("tr");
-//     fid = tr.getAttribute("data-fid");
+//     fid = tr.ataset.fid;
 //     wishlist.products = wishlist.products.filter(
 //         product => +product.fid !== fid 
 //     );
@@ -50,6 +50,8 @@ $(document).ready(() => {
         }
         if(addToCart) {
           cart.products.push(product);
+          product.quantity = 1;
+          product.total = parseFloat(product.price * product.quantity);
         }
         localStorage.setItem('cart', JSON.stringify(cart));
     });
