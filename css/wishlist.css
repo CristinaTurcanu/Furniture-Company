@@ -39,3 +39,39 @@ body {
 .table tbody tr .add {
     color: rgb(82, 110, 56);
 }
+@media screen and (max-width: 1400px) {
+    .wishlist {
+        width: 90%;
+    }
+    .wishlist h3 {
+        font-size: 3.7rem;
+    }
+    .table tbody > tr > th > img {
+        width: 60px;
+        height: 50px;
+    } 
+    .table {
+        font-size: 16px;
+    }
+    .table tbody > tr > td input {
+        width: 36px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .wishlist {
+        width: 100%;
+    }
+    .wishlist h3 {
+        font-size: 2.2rem;
+    }
+    .table tbody > tr > th > img {
+        width: 30px;
+        height: 30px;
+    } 
+    .table {
+        font-size: 12px;
+    }
+    .table tbody > tr > td input {
+        width: 26px;
+    }
+}

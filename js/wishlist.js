@@ -11,17 +11,11 @@ if(localStorage.wishlist) {
 for(product of wishlist.products) {
     wishlistContainer.innerHTML += addToWishlist(product);
 }
-
+// Delete product from wishlist and localStorage
 let delBtns = wishlistContainer.getElementsByClassName("del");
 for (var i = 0; i < delBtns.length; i++) {
     delBtns[i].addEventListener("click", deleteProduct, false);
 }
-
-let addBtns = wishlistContainer.getElementsByClassName("add");
-for (var i = 0; i < addBtns.length; i++) {
-    addBtns[i].addEventListener("click", addProduct, false);
-}
-
 function deleteProduct() {
     let delBtn = event.target;
     let tr = delBtn.parentNode;
@@ -33,22 +27,30 @@ function deleteProduct() {
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
     tr.style.display = "none";
 }
+// -----------------------------------------------------------------
+
+// Add product from wishlist to cart
+let addBtns = wishlistContainer.getElementsByClassName("add");
+for (var i = 0; i < addBtns.length; i++) {
+    addBtns[i].addEventListener("click", addProduct, false);
+}
 function addProduct() {
     let addBtn = event.target;
+    let fid = addBtn.parentNode.dataset.fid;
     addBtn.textContent = "Added";
-    console.log(addBtn);
 
     if(localStorage.cart) {
-        cart = JSON.parse(localStorage.getItem('cart'));
+        cart = JSON.parse(localStorage.getItem("cart"));
     } else {
-        cart = {"products": []};
+        cart = { products: [] };
     }
 
     let addToCart = true;
+    let product = wishlist.products.filter(product => +product.fid == fid)[0];
     for (prod of cart.products) {
         if (prod.fid == product.fid) {
             addToCart = false;
-            prod.quantity += product.quantity;
+            prod.quantity++;
         }
     }
     if (addToCart) {
@@ -56,58 +58,9 @@ function addProduct() {
         product.quantity = 1;
         product.total = parseFloat(product.price * product.quantity);
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
-
-// $(document).ready(() => {
-//     wishlistContainer = $('.wishlist .table tbody');
-//     let wishlist = { "products": [] };
-//     if (localStorage.wishlist) {
-//         wishlist = JSON.parse(localStorage.getItem('wishlist'))
-//     } else {
-//         wishlistContainer
-//             .text("Wishlist is empty")
-//             .css('font-size', '30px');
-//     }
-//     for (product of wishlist.products) {
-//         wishlistContainer[0].innerHTML += addToWishlist(product)
-//     }
-
-    // Add product from wishlist to shopping cart
-    // wishlistContainer.on("click", ".add", evt => {
-    //     let addBtn = $(evt.target);
-    //     addBtn.text("Added");
-
-    //     cart = JSON.parse(localStorage.getItem('cart'));
-    //     let addToCart = true;
-    //     for (prod of cart.products) {
-    //         if (prod.fid == product.fid) {
-    //             addToCart = false;
-    //             prod.quantity += product.quantity;
-    //         }
-    //     }
-    //     if (addToCart) {
-    //         cart.products.push(product);
-    //         product.quantity = 1;
-    //         product.total = parseFloat(product.price * product.quantity);
-    //     }
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    // });
-
-    // Delete a product from wishlist
-//     wishlistContainer.on("click", ".del", evt => {
-//         let delButton = $(evt.target);
-//         tr = delButton.closest("tr");
-//         tr.hide();
-//         cid = tr.data("cid");
-//         fid = tr.data("fid");
-//         wishlist.products = wishlist.products.filter(
-//             product => +product.fid !== fid
-//         );
-//         localStorage.setItem('wishlist', JSON.stringify(wishlist));
-//     });
-
-// });
+// ----------------------------------------------------------------------------
 
 function addToWishlist(product) {
     return `<tr data-fid="${product.fid}">

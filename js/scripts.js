@@ -1,4 +1,4 @@
-
+// Create button and retrive names from api
 let categoryContainer = document.getElementById("categories");
 let categoryUrl = "http://iw-internship.herokuapp.com/api/v1/furniture-categories/";
 fetch(categoryUrl)
@@ -15,80 +15,72 @@ fetch(categoryUrl)
     }
   });
 
-// categoryContainer.addEventListener("click", selectCategory, false);
-// function selectCategory(evt) {
-//   let target = event.target;
-//   const catId = target.dataset.id;
-//   furnituresUrl = `${categoryUrl}${catId}/furnitures`;
-//   fetch(furnituresUrl)
-//     .then(response => response.json())
-//     .then((furnitures) => {
-//         cardContainer = document.getElementById("cards");
-//         while (cardContainer.firstChild) {
-//           cardContainer.removeChild(cardContainer.firstChild);
-//         }
-//         for (furniture of furnitures) {
-//             if (furniture.visible) {
-//               cardContainer.appendChild(generateCard(furniture, catId));
-//             }
-//         }
-//     });
-// }
-$(document).ready(() => {
-  $(document).on('click', '.products .categories .btn', (evt) => {
-    let target = $(evt.target);
-    const catId = target.data("id");
-
-    furnituresUrl = `${categoryUrl}${catId}/furnitures`;
-    fetch(furnituresUrl)
-      .then(response => response.json())
-      .then((furnitures) => {
-          cardContainer = $(".products .cards");
-          cardContainer.children('.card').remove();
-          for (furniture of furnitures) {
-              if (furniture.visible) {
-                cardContainer.append(generateCard(furniture, catId));
+let cardContainer = document.getElementById("cards");
+let wish = cardContainer.getElementsByClassName("fa-heart");
+let addBtns = cardContainer.getElementsByClassName("add");
+// Add event listeners to buttons
+categoryContainer.addEventListener("click", selectCategory, false);
+function selectCategory(event) {
+  let target = event.target;
+  const catId = target.dataset.id;
+  furnituresUrl = `${categoryUrl}${catId}/furnitures`;
+  fetch(furnituresUrl)
+    .then(response => response.json())
+    .then((furnitures) => {
+         while (cardContainer.firstChild) {
+          cardContainer.removeChild(cardContainer.firstChild);
+        }
+        for (furniture of furnitures) {
+            if (furniture.visible) {
+              cardContainer.innerHTML += generateCard(furniture, catId);
+              for( var i = 0; i < wish.length; i++) {
+                wish[i].addEventListener("click", addToWishlist, false);
               }
-          }
-      });
+
+              for (var i = 0; i < addBtns.length; i++) {
+                addBtns[i].addEventListener("click", addToCart, false);
+              }
+            }
+        }
     });
-  // Add to wishlist when clicking on the product and push the product to localStorage cart
-  $(document).on('click', '.products .cards .card .overlay i', (evt) => {
-    i = $(evt.target);
-    i.closest('.overlay').addClass('added');
+}
+// Click the heart and add the product to wishlist
+function addToWishlist() {
+  let heart = event.target;
+  let overlay = heart.parentNode;
+  overlay.classList.add("added");
 
-    let wishlist = localStorage.getItem('wishlist');
-      if(wishlist) {
-        wishlist = JSON.parse(wishlist);    
-      } else {
-        wishlist = {products: []};
-      }
+  let wishlist = localStorage.getItem('wishlist');
+  if(wishlist) {
+    wishlist = JSON.parse(wishlist);    
+  } else {
+    wishlist = {products: []};
+  }
 
-    card = i.closest('.card');
-    let product = {};
-    product.fid = card.attr('data-fid');
-    product.name = card.find('.description .name').text();
-    product.price = card.find('.description .price').text();
-    product.color = card.find('.description .color').text();
-    product.availability = card.find('.description .availability').text();
-    product.img = card.find('img').attr('src');
+  let card = heart.parentNode.parentNode;
+  let product = {}
+  product.fid = card.dataset.fid;
+  product.img = card.firstElementChild.getAttribute("src");
+  product.name = card.querySelector(".description").querySelector(".name").textContent;
+  product.price = card.querySelector(".description").querySelector(".price").textContent;
+  product.color = card.querySelector(".description").querySelector(".color").textContent;
+  product.availability = card.querySelector(".description").querySelector(".availability").textContent;
 
-    let allowToAdd = true;
-    for (prod of wishlist.products) {
-      if (prod.fid == product.fid) {
-        allowToAdd = false;
-      }
+  let allowToAdd = true;
+  for (prod of wishlist.products) {
+    if (prod.fid == product.fid) {
+      allowToAdd = false;
     }
-    if (allowToAdd) {
-      wishlist.products.push(product);
-    }
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-  });
+  }
+  if (allowToAdd) {
+    wishlist.products.push(product);
+  }
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
 
-// Add product to shopping list from products list and push it to localStorage cart
-  $(document).on('click', '.products .cards .card .shopping .add', (evt) => {
-    addBtn = $(evt.target);
-    addBtn.text("Added");
+function addToCart() {
+    let addBtn = event.target;
+    addBtn.textContent = "Added";
 
     let cart = localStorage.getItem('cart');
       if(cart) {
@@ -96,16 +88,16 @@ $(document).ready(() => {
       } else {
         cart = {products: []};
       }
-    card = addBtn.closest('.card');  
+    let card = addBtn.parentNode.parentNode;
 
     let product = {};
-    product.img = card.find('img').attr('src');
-    product.fid = card.attr('data-fid');
-    product.name = card.find('.description .name').text();
-    product.availability = card.find('.description .availability').text();
-    product.color = card.find('.description .color').text();
-    product.price = parseFloat(card.find('.description .price').text());
-    product.quantity = parseFloat(card.find('.shopping select option').filter(":selected").text());
+    product.fid = card.dataset.fid;
+    product.img = card.firstElementChild.getAttribute("src");
+    product.name = card.querySelector(".description").querySelector(".name").textContent;
+    product.color = card.querySelector(".description").querySelector(".color").textContent;
+    product.availability = card.querySelector(".description").querySelector(".availability").textContent;
+    product.price = parseFloat(card.querySelector(".description").querySelector(".price").textContent);
+    product.quantity = parseFloat(card.querySelector(".shopping").querySelector(".form-control").value);
     product.total = product.price * product.quantity;
 
     let addToCart = true;
@@ -119,10 +111,7 @@ $(document).ready(() => {
       cart.products.push(product);
     }
     localStorage.setItem('cart', JSON.stringify(cart));
-  });
-});
-
-
+}
 function generateCard(furniture, catId) {
   return `<div class="card" data-fid="${furniture.id}" data-cid="${catId}">
             <img src="images/products/frn${furniture.id}.jpg">
