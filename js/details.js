@@ -34,7 +34,6 @@ if (categoryId && furnitureId) {
     });
 }
 
-
 function addTocart() {
   let product = {};
   product.img = `images/products/frn${furnitureId}.jpg`;

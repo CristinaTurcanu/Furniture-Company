@@ -1,3 +1,54 @@
+// shoppingCart = document.getElementById("cartContainer");
+// let cart = {"products": []};
+
+// if(localStorage.cart) {
+//     cart = JSON.parse(localStorage.getItem("cart"))
+// } else {
+//     shoppingCart.texContent = "Shopping Cart is empty"
+// }
+// let totalProductsPrice = 0;
+// for(product of cart.products){
+//     shoppingCart.innerHTML += addToCart(product);
+//     totalProductsPrice += product.total;
+// }
+// let totalSum = document.getElementById("totalSum");
+// totalSum.textContent = totalProductsPrice + " $";
+
+// let inputQ = shoppingCart.getElementsByClassName("inputQuantity");
+// for (var q = 0; q < inputQ.length; q++) {
+//     inputQ[q].addEventListener("click", changeQuantity, false);
+// }
+
+// function changeQuantity() {
+//     let input = event.target;
+//     let tr = input.parentNode.parentNode;
+//     let price = tr.getElementsByClassName("productPrice");
+//     let productTotal = tr.getElementsByClassName("productTotal");
+//     for (var p = 0; p < price.length; p++){
+//         p = price[p].textContent;
+//         console.log(p);
+//     }
+
+//     for (var t = 0; t < productTotal.length; t++){
+//         productTotal[t].textContent = p * input.value;
+//         console.log(p[t]);
+//         console.log(input.value);
+//         t = parseFloat(productTotal[t].textContent);
+//         console.log(t);
+//     }
+//     let totalProductsPrice = 0;
+        
+//     for (prod of cart.products) {
+//         if (prod.fid == tr.dataset.fid) {
+//             prod.quantity = input.value;
+//             prod.total = prod.price * prod.quantity;
+//         }
+//         totalProductsPrice += parseFloat(prod.total);
+//         }
+//         totalSum.textContent = totalProductsPrice + " $";
+//         localStorage.setItem("cart", JSON.stringify(cart));
+// }
+
 
 $(document).ready(() => {
     shoppingCart = $('.cart .table tbody');
@@ -57,8 +108,6 @@ $(document).ready(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     });
 });
-
-
 
 function addToCart(product) {
     return `<tr data-fid="${product.fid}">

@@ -1,79 +1,116 @@
 
-// wishlistContainer = document.getElementById("wishlistContainer");
-//  if(localStorage.wishlist) {
-//      wishlist = JSON.parse(localStorage.getItem("wishlist"));
-//  } else {
-//      wishlistContainer.textContent = "Wishlist is empty!";
-//  }
-//  for(product of wishlist.products) {
-//      wishlistContainer.appendChild(addToWishlist());
-//  }
-//  delBtn = document.getElementsByClassName("del");
-//  delBtn.addEventListener("click", deleteProduct, false);
+let wishlistContainer = document.getElementById("wishlistContainer");
+let wishlist = {"products": []};
+let cart = {"products": []};
 
-// function deleteProduct (event) {
-//     let del = event.target;
-//     tr = del.closest("tr");
-//     fid = tr.ataset.fid;
-//     wishlist.products = wishlist.products.filter(
-//         product => +product.fid !== fid 
-//     );
-//     localStorage.setItem('wishlist', JSON.stringify(wishlist));
-// }
+if(localStorage.wishlist) {
+    wishlist = JSON.parse(localStorage.getItem("wishlist"));
+} else {
+    wishlistContainer.textContent = "Wishlist is empty!";
+}
+for(product of wishlist.products) {
+    wishlistContainer.innerHTML += addToWishlist(product);
+}
 
-$(document).ready(() => {
-    wishlistContainer = $('.wishlist .table tbody');
-    let wishlist = { "products": [] };
-    if (localStorage.wishlist) {
-        wishlist = JSON.parse(localStorage.getItem('wishlist'))
+let delBtns = wishlistContainer.getElementsByClassName("del");
+for (var i = 0; i < delBtns.length; i++) {
+    delBtns[i].addEventListener("click", deleteProduct, false);
+}
+
+let addBtns = wishlistContainer.getElementsByClassName("add");
+for (var i = 0; i < addBtns.length; i++) {
+    addBtns[i].addEventListener("click", addProduct, false);
+}
+
+function deleteProduct() {
+    let delBtn = event.target;
+    let tr = delBtn.parentNode;
+    let fid = tr.dataset.fid;
+
+    wishlist.products = wishlist.products.filter(
+        product => product.fid != fid
+    );
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    tr.style.display = "none";
+}
+function addProduct() {
+    let addBtn = event.target;
+    addBtn.textContent = "Added";
+    console.log(addBtn);
+
+    if(localStorage.cart) {
+        cart = JSON.parse(localStorage.getItem('cart'));
     } else {
-        wishlistContainer
-            .text("Wishlist is empty")
-            .css('font-size', '30px');
+        cart = {"products": []};
     }
-    for (product of wishlist.products) {
-        // wishlistContainer.append(addToWishlist(product));
-        wishlistContainer[0].innerHTML += addToWishlist(product)
+
+    let addToCart = true;
+    for (prod of cart.products) {
+        if (prod.fid == product.fid) {
+            addToCart = false;
+            prod.quantity += product.quantity;
+        }
     }
+    if (addToCart) {
+        cart.products.push(product);
+        product.quantity = 1;
+        product.total = parseFloat(product.price * product.quantity);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// $(document).ready(() => {
+//     wishlistContainer = $('.wishlist .table tbody');
+//     let wishlist = { "products": [] };
+//     if (localStorage.wishlist) {
+//         wishlist = JSON.parse(localStorage.getItem('wishlist'))
+//     } else {
+//         wishlistContainer
+//             .text("Wishlist is empty")
+//             .css('font-size', '30px');
+//     }
+//     for (product of wishlist.products) {
+//         wishlistContainer[0].innerHTML += addToWishlist(product)
+//     }
 
     // Add product from wishlist to shopping cart
-    wishlistContainer.on("click", ".add", evt => {
-        let addBtn = $(evt.target);
-        addBtn.text("Added");
+    // wishlistContainer.on("click", ".add", evt => {
+    //     let addBtn = $(evt.target);
+    //     addBtn.text("Added");
 
-        cart = JSON.parse(localStorage.getItem('cart'));
-        let addToCart = true;
-        for (prod of cart.products) {
-            if (prod.fid == product.fid) {
-                addToCart = false;
-                prod.quantity += product.quantity;
-            }
-        }
-        if (addToCart) {
-            cart.products.push(product);
-            product.quantity = 1;
-            product.total = parseFloat(product.price * product.quantity);
-        }
-        localStorage.setItem('cart', JSON.stringify(cart));
-    });
+    //     cart = JSON.parse(localStorage.getItem('cart'));
+    //     let addToCart = true;
+    //     for (prod of cart.products) {
+    //         if (prod.fid == product.fid) {
+    //             addToCart = false;
+    //             prod.quantity += product.quantity;
+    //         }
+    //     }
+    //     if (addToCart) {
+    //         cart.products.push(product);
+    //         product.quantity = 1;
+    //         product.total = parseFloat(product.price * product.quantity);
+    //     }
+    //     localStorage.setItem('cart', JSON.stringify(cart));
+    // });
 
     // Delete a product from wishlist
-    wishlistContainer.on("click", ".del", evt => {
-        let delButton = $(evt.target);
-        tr = delButton.closest("tr");
-        tr.hide();
-        cid = tr.data("cid");
-        fid = tr.data("fid");
-        wishlist.products = wishlist.products.filter(
-            product => +product.fid !== fid
-        );
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    });
+//     wishlistContainer.on("click", ".del", evt => {
+//         let delButton = $(evt.target);
+//         tr = delButton.closest("tr");
+//         tr.hide();
+//         cid = tr.data("cid");
+//         fid = tr.data("fid");
+//         wishlist.products = wishlist.products.filter(
+//             product => +product.fid !== fid
+//         );
+//         localStorage.setItem('wishlist', JSON.stringify(wishlist));
+//     });
 
-});
+// });
 
 function addToWishlist(product) {
-    return `<tr data-fid="${product.fid}" data-cid="${product.cid}">
+    return `<tr data-fid="${product.fid}">
                 <th scope="row">
                 <img src="${product.img}">
                 </th>
