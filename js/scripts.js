@@ -114,7 +114,7 @@ function addToCart() {
 }
 function generateCard(furniture, catId) {
   return `<div class="card" data-fid="${furniture.id}" data-cid="${catId}">
-            <img src="images/products/frn${furniture.id}.jpg">
+            <img src="images/products/frn143.jpg">
             <div class="description">
                 <a href="product-details.html?cid=${catId}&fid=${furniture.id}"><p class="name">${furniture.name}</p></a>
                 <p class="price">${furniture.price}</p>

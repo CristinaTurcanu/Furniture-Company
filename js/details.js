@@ -36,7 +36,8 @@ if (categoryId && furnitureId) {
 
 function addTocart() {
   let product = {};
-  product.img = `images/products/frn${furnitureId}.jpg`;
+  // product.img = `images/products/frn${furnitureId}.jpg`;
+  product.img = document.getElementById("img").src;
   product.fid = furnitureId;
   product.name = document.getElementById("name").textContent;
   product.availability = document.getElementById("availability").textContent;
